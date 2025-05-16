@@ -5,10 +5,9 @@ require("dotenv").config();
 
 const app = express();
 
-// ✅ PASO 3: Agregar orígenes permitidos en CORS
 const allowedOrigins = [
     "http://localhost:3000", // desarrollo local
-    "https://onetap-esports.netlify.app", // producción en Netlify (reemplaza esto)
+    "https://onetap-esports.netlify.app", // producción en Netlify
 ];
 
 app.use(
