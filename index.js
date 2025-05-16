@@ -64,6 +64,4 @@ app.get("/api/youtubeVideo", async (req, res) => {
     }
 });
 
-console.log("YOUTUBE_API_KEY:", process.env.YOUTUBE_API_KEY);
-
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
