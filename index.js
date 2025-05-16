@@ -32,6 +32,7 @@ app.get("/api/youtube", async (req, res) => {
                     part: "snippet",
                     order: "date",
                     maxResults: 5,
+                    q: "",
                 },
             }
         );
