@@ -4,11 +4,22 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
-app.use(cors());
+
+// ✅ PASO 3: Agregar orígenes permitidos en CORS
+const allowedOrigins = [
+    "http://localhost:3000", // desarrollo local
+    "https://onetap-esports.netlify.app", // producción en Netlify (reemplaza esto)
+];
+
+app.use(
+    cors({
+        origin: allowedOrigins,
+    })
+);
 
 const PORT = process.env.PORT || 5000;
 
-// Endpoint para obtener videos de un canal (ya existente)
+// Endpoint para obtener videos de un canal
 app.get("/api/youtube", async (req, res) => {
     const channelId = req.query.channelId;
 
@@ -31,7 +42,7 @@ app.get("/api/youtube", async (req, res) => {
     }
 });
 
-// Nuevo endpoint para obtener detalles de un video por ID
+// Endpoint para obtener detalles de un video
 app.get("/api/youtubeVideo", async (req, res) => {
     const videoId = req.query.id;
 
