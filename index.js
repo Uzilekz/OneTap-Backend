@@ -8,6 +8,7 @@ app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 
+// Endpoint para obtener videos de un canal (ya existente)
 app.get("/api/youtube", async (req, res) => {
     const channelId = req.query.channelId;
 
@@ -27,6 +28,29 @@ app.get("/api/youtube", async (req, res) => {
         res.json(response.data);
     } catch (error) {
         res.status(500).json({ error: "Error fetching data from YouTube" });
+    }
+});
+
+// Nuevo endpoint para obtener detalles de un video por ID
+app.get("/api/youtubeVideo", async (req, res) => {
+    const videoId = req.query.id;
+
+    try {
+        const response = await axios.get(
+            `https://www.googleapis.com/youtube/v3/videos`,
+            {
+                params: {
+                    key: process.env.YOUTUBE_API_KEY,
+                    id: videoId,
+                    part: "snippet,contentDetails",
+                },
+            }
+        );
+        res.json(response.data);
+    } catch (error) {
+        res.status(500).json({
+            error: "Error fetching video details from YouTube",
+        });
     }
 });
 
