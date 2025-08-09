@@ -12,7 +12,7 @@ const allowedOrigins = [
 
 app.use(
     cors({
-        origin: allowedOrigins,
+        origin: "*",
     })
 );
 
