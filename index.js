@@ -5,6 +5,8 @@ require("dotenv").config();
 
 const app = express();
 
+console.log(process.env.YOUTUBE_API_KEY);
+
 // --- CORS ---
 const allowedOrigins = [
     "http://localhost:3000", // desarrollo local
